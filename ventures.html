@@ -4,386 +4,227 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Ventures — Trust Ogor</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23080c14'/><text y='.9em' font-size='72' x='50%' dominant-baseline='middle' text-anchor='middle' fill='%235b8dee' font-family='sans-serif' font-weight='800'>T</text></svg>"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%23f97316'/><text x='50' y='72' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='54' fill='white'>V</text></svg>"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-:root{--bg:#080c14;--surface:#0d1424;--border:rgba(255,255,255,.06);--accent:#5b8dee;--teal:#38d9a9;--text:#e2e8f0;--muted:#64748b;--muted2:#94a3b8;--orange:#f97316}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(91,141,238,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(91,141,238,.03) 1px,transparent 1px);background-size:60px 60px}
-
-/* Glow blob */
-.glow-blob{position:fixed;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(91,141,238,.09) 0%,transparent 70%);pointer-events:none;z-index:0;top:-200px;left:-200px;transition:transform .08s linear}
-
-/* Nav */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:all .3s}
-nav.scrolled{background:rgba(8,12,20,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-nav .container{max-width:1100px;margin:0 auto;padding:0 28px}
-nav .inner{display:flex;align-items:center;justify-content:space-between}
-.home-btn{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;color:var(--text);text-decoration:none;letter-spacing:-.3px}
-.home-btn span{color:var(--accent)}
-.nav-links{display:flex;gap:28px;align-items:center}
-.nav-links a{color:var(--muted2);text-decoration:none;font-size:13.5px;font-weight:500;transition:color .2s}
-.nav-links a:hover{color:var(--text)}
-.nav-links a.active{color:var(--accent)}
-.nav-ventures-badge{background:rgba(249,115,22,.12);color:var(--orange);border:1px solid rgba(249,115,22,.25);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
-
-/* Layout */
-.container{max-width:1100px;margin:0 auto;padding:0 28px}
-.divider{height:1px;background:var(--border);margin:0}
-
-/* Hero */
-.ventures-hero{padding:140px 0 32px;position:relative;z-index:1}
-.ventures-hero-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
-.ventures-hero-heading{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(36px,5vw,58px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;color:var(--text);margin-bottom:20px}
-.ventures-hero-heading span{color:var(--accent)}
-.ventures-hero-sub{font-size:16px;color:var(--muted2);line-height:1.7;max-width:620px;margin-bottom:36px}
-.founder-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);border-radius:30px;padding:8px 18px}
-.founder-badge-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);animation:pulse-orange 2s infinite}
-@keyframes pulse-orange{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
-.founder-badge-text{font-size:13px;font-weight:600;color:var(--orange)}
-
-/* Section labels */
-.section-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
-section{padding:40px 0 80px;position:relative;z-index:1}
-
-/* Venture card */
-.venture-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:32px}
-.venture-card-header{padding:32px 32px 24px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.venture-logo-area{display:flex;align-items:center;gap:16px}
-.venture-logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,rgba(249,115,22,.2),rgba(249,115,22,.05));border:1px solid rgba(249,115,22,.2);display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;color:var(--orange)}
-.venture-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:26px;font-weight:800;letter-spacing:-.5px;color:var(--text)}
-.venture-tagline{font-size:13.5px;color:var(--muted2);margin-top:3px}
-.venture-status{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
-.status-badge{display:inline-flex;align-items:center;gap:6px;border-radius:20px;padding:5px 13px;font-size:11.5px;font-weight:700;letter-spacing:.3px}
-.status-building{background:rgba(56,217,169,.1);border:1px solid rgba(56,217,169,.25);color:var(--teal)}
-.status-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse-teal 2s infinite}
-@keyframes pulse-teal{0%,100%{opacity:1}50%{opacity:.4}}
-.venture-role{font-size:12px;color:var(--muted);font-weight:500}
-
-/* Venture body */
-.venture-body{padding:32px}
-.venture-section{margin-bottom:28px}
-.venture-section:last-child{margin-bottom:0}
-.venture-section-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
-.venture-section-text{font-size:14px;color:var(--muted2);line-height:1.75}
-
-/* Problem/Solution split */
-.ps-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
-.ps-card{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:12px;padding:20px}
-.ps-card-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
-.ps-card.problem .ps-card-label{color:#f87171}
-.ps-card.solution .ps-card-label{color:var(--teal)}
-.ps-card-text{font-size:13.5px;color:var(--muted2);line-height:1.7}
-
-/* Three features */
-.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}
-.feature-card{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:12px;padding:18px;transition:border-color .2s}
-.feature-card:hover{border-color:rgba(249,115,22,.25)}
-.feature-icon{font-size:22px;margin-bottom:10px}
-.feature-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px}
-.feature-desc{font-size:12.5px;color:var(--muted2);line-height:1.6}
-
-/* Tech stack chips */
-.tech-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.tech-chip{background:rgba(91,141,238,.08);border:1px solid rgba(91,141,238,.18);border-radius:6px;padding:4px 11px;font-size:11.5px;color:var(--muted2);font-weight:500}
-
-/* Metrics row */
-.venture-metrics{display:flex;flex-wrap:wrap;gap:12px;padding:24px 32px;background:rgba(249,115,22,.03);border-top:1px solid var(--border)}
-.v-metric{display:flex;flex-direction:column;gap:3px;min-width:100px}
-.v-metric-val{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;color:var(--orange)}
-.v-metric-lbl{font-size:11px;color:var(--muted);font-weight:500}
-
-/* Role breakdown */
-.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.role-card{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:10px;padding:16px}
-.role-card-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:12.5px;font-weight:700;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:7px}
-.role-card-icon{font-size:14px}
-.role-bullets{list-style:none;display:flex;flex-direction:column;gap:5px}
-.role-bullets li{font-size:12.5px;color:var(--muted2);line-height:1.5;padding-left:12px;position:relative}
-.role-bullets li::before{content:"·";position:absolute;left:0;color:var(--orange)}
-
-/* Why Now */
-.why-now-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.why-now-item{display:flex;align-items:flex-start;gap:10px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:10px;padding:14px}
-.why-now-icon{font-size:16px;flex-shrink:0;margin-top:1px}
-.why-now-text{font-size:13px;color:var(--muted2);line-height:1.6}
-
-/* Founder note */
-.founder-note{background:rgba(91,141,238,.04);border:1px solid rgba(91,141,238,.15);border-radius:14px;padding:28px 32px;margin-top:48px}
-.founder-note-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
-.founder-note-text{font-size:15px;color:var(--muted2);line-height:1.8;font-style:italic}
-.founder-note-sig{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;color:var(--text);margin-top:16px}
-
-/* Reveal */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
-
-/* Footer */
-footer{padding:32px 0;border-top:1px solid var(--border)}
-.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.footer-copy{font-size:12px;color:var(--muted)}
-.footer-back{font-size:13px;color:var(--accent);text-decoration:none;font-weight:600;transition:opacity .2s}
-.footer-back:hover{opacity:.7}
-
-@media(max-width:768px){
-  .ps-grid,.features-grid,.role-grid,.why-now-grid{grid-template-columns:1fr}
-  .venture-card-header{flex-direction:column}
-  .venture-status{align-items:flex-start}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#f5f4f0;color:#0d0d0d;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+::selection{background:rgba(249,115,22,.15);color:#0d0d0d;}
+:root{--bg:#f5f4f0;--surface:#ffffff;--surface2:#f0ede8;--text:#0d0d0d;--muted:#6b6b6b;--muted2:#9a9a9a;--border:#e2ddd8;--border2:#cdc8c1;--accent:#f97316;--accent-dim:rgba(249,115,22,.08);--accent-mid:rgba(249,115,22,.2);--dark:#0d0d0d;--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',sans-serif;--mono:'DM Mono','Courier New',monospace;--nav-h:64px;--container:1200px;}
+nav{position:sticky;top:0;z-index:200;height:64px;background:rgba(245,244,240,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid #e2ddd8;}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 64px;height:100%;display:flex;align-items:center;justify-content:space-between;gap:40px;}
+.nav-brand{font-family:'Playfair Display',Georgia,serif;font-size:18px;font-weight:700;color:#0d0d0d;letter-spacing:-.3px;}
+.nav-links{display:flex;align-items:center;gap:36px;}
+.nav-links a{font-size:12px;font-weight:500;letter-spacing:.3px;color:#6b6b6b;transition:color .15s;}
+.nav-links a:hover{color:#0d0d0d;}
+.nav-active{color:#f97316 !important;font-weight:600 !important;}
+.nav-cta{background:#f97316;color:#fff;font-size:12px;font-weight:600;letter-spacing:.4px;padding:9px 22px;border-radius:4px;transition:opacity .2s;flex-shrink:0;}
+.nav-cta:hover{opacity:.85;}
+.container{max-width:1200px;margin:0 auto;padding:0 64px;}
+.ventures-hero{border-bottom:1px solid #e2ddd8;display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:56vh;align-items:center;}
+.vh-left{padding:72px 64px;border-right:1px solid #e2ddd8;}
+.vh-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#f97316;display:flex;align-items:center;gap:8px;margin-bottom:24px;}
+.vh-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:#f97316;}
+.vh-h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(48px,6vw,72px);font-weight:900;line-height:1.0;letter-spacing:-2.5px;margin-bottom:24px;}
+.vh-h1 em{font-style:italic;color:#f97316;}
+.vh-sub{font-size:15px;color:#6b6b6b;line-height:1.8;max-width:460px;font-weight:300;margin-bottom:36px;}
+.vh-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);border-radius:30px;padding:9px 20px;}
+.vh-badge-dot{width:7px;height:7px;border-radius:50%;background:#f97316;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.3)}}
+.vh-badge-text{font-size:12px;font-weight:600;color:#f97316;font-family:'DM Mono',monospace;letter-spacing:.5px;}
+.vh-right{padding:72px 64px;display:flex;flex-direction:column;gap:16px;background:#f0ede8;}
+.vh-stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:#e2ddd8;border-radius:8px;overflow:hidden;}
+.vh-stat{background:#fff;padding:20px 22px;}
+.vh-stat-val{font-family:'Playfair Display',Georgia,serif;font-size:28px;font-weight:700;color:#f97316;letter-spacing:-.5px;line-height:1;margin-bottom:4px;}
+.vh-stat-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#9a9a9a;}
+.vh-mission{background:#0d0d0d;color:#fff;border-radius:8px;padding:24px;}
+.vh-mission-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:10px;}
+.vh-mission-text{font-family:'Playfair Display',Georgia,serif;font-size:15px;font-style:italic;color:#fff;line-height:1.65;}
+.section{padding:80px 0;border-bottom:1px solid #e2ddd8;}
+.venture-card{border:1px solid #e2ddd8;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 2px 16px rgba(0,0,0,.04);}
+.vc-header{padding:32px;border-bottom:1px solid #e2ddd8;background:#f0ede8;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.vc-logo-row{display:flex;align-items:center;gap:16px;}
+.vc-logo{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,rgba(249,115,22,.15),rgba(249,115,22,.05));border:1px solid rgba(249,115,22,.2);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:900;color:#f97316;flex-shrink:0;}
+.vc-name{font-family:'Playfair Display',Georgia,serif;font-size:26px;font-weight:900;letter-spacing:-.5px;color:#0d0d0d;margin-bottom:4px;}
+.vc-tagline{font-size:13px;color:#6b6b6b;}
+.vc-url{display:inline-flex;align-items:center;gap:4px;font-family:'DM Mono',monospace;font-size:11px;color:#f97316;border:1px solid rgba(249,115,22,.2);background:rgba(249,115,22,.06);border-radius:4px;padding:3px 10px;margin-top:8px;transition:opacity .15s;}
+.vc-url:hover{opacity:.75;}
+.vc-status-col{display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
+.vc-status{display:flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1px;color:#f97316;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);border-radius:20px;padding:5px 14px;}
+.vc-status-dot{width:6px;height:6px;border-radius:50%;background:#f97316;animation:pulse 2s infinite;}
+.vc-role{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#9a9a9a;}
+.vc-body{padding:32px;}
+.vc-block-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#9a9a9a;margin-bottom:10px;}
+.vc-block-text{font-size:13px;color:#6b6b6b;line-height:1.75;}
+.vc-two-col{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid #e2ddd8;}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid #e2ddd8;}
+.feature-card{background:#f0ede8;border:1px solid #e2ddd8;border-radius:8px;padding:20px;transition:border-color .2s;position:relative;overflow:hidden;}
+.feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:#f97316;opacity:0;transition:opacity .2s;}
+.feature-card:hover{border-color:rgba(249,115,22,.3);}
+.feature-card:hover::before{opacity:1;}
+.feature-icon{font-size:20px;margin-bottom:10px;}
+.feature-name{font-size:13px;font-weight:600;color:#0d0d0d;margin-bottom:6px;}
+.feature-desc{font-size:12px;color:#6b6b6b;line-height:1.6;}
+.why-now-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid #e2ddd8;}
+.why-item{display:flex;align-items:flex-start;gap:12px;padding:16px;background:#f0ede8;border:1px solid #e2ddd8;border-radius:8px;}
+.why-icon{font-size:18px;flex-shrink:0;margin-top:1px;}
+.why-text{font-size:12px;color:#6b6b6b;line-height:1.6;}
+.role-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid #e2ddd8;}
+.role-card{background:#f0ede8;border:1px solid #e2ddd8;border-radius:8px;padding:20px;transition:all .2s;}
+.role-card:hover{border-color:#cdc8c1;background:#fff;}
+.role-card-icon{font-size:20px;margin-bottom:10px;}
+.role-card-name{font-size:13px;font-weight:700;color:#0d0d0d;margin-bottom:8px;}
+.role-card-desc{font-size:12px;color:#6b6b6b;line-height:1.65;}
+.tech-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid #e2ddd8;}
+.tech-chip{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.5px;color:#6b6b6b;background:#f0ede8;border:1px solid #e2ddd8;border-radius:4px;padding:5px 12px;transition:all .15s;}
+.tech-chip:hover{border-color:rgba(249,115,22,.3);color:#f97316;background:rgba(249,115,22,.06);}
+.metrics-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#e2ddd8;border-radius:8px;overflow:hidden;}
+.metric-tile{background:#f0ede8;padding:20px;}
+.metric-val{font-family:'Playfair Display',Georgia,serif;font-size:24px;font-weight:700;color:#f97316;letter-spacing:-.5px;line-height:1;margin-bottom:4px;}
+.metric-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#9a9a9a;line-height:1.4;}
+footer{padding:32px 0;border-top:1px solid #e2ddd8;}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 64px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.footer-brand{font-family:'Playfair Display',Georgia,serif;font-size:15px;font-weight:700;color:#0d0d0d;}
+.footer-copy{font-family:'DM Mono',monospace;font-size:10px;color:#9a9a9a;letter-spacing:.5px;}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#6b6b6b;transition:color .15s;}
+.footer-links a:hover{color:#0d0d0d;}
+@media(max-width:900px){
+  .nav-inner,.container,.footer-inner{padding-left:24px;padding-right:24px;}
+  .ventures-hero{grid-template-columns:1fr;min-height:auto;}
+  .vh-left{padding:48px 24px;border-right:none;border-bottom:1px solid #e2ddd8;}
+  .vh-right{padding:32px 24px;}
+  .vc-two-col,.features-grid,.why-now-grid,.role-grid{grid-template-columns:1fr;}
+  .metrics-row{grid-template-columns:repeat(2,1fr);}
 }
-
-/* DROPDOWN NAV */
-.nav-dropdown{position:relative;}
-.nav-dropdown-toggle{cursor:pointer;display:flex;align-items:center;gap:4px;color:var(--muted2);font-size:13.5px;font-weight:500;transition:color .2s;}
-.nav-dropdown-toggle:hover{color:var(--text);}
-.nav-dropdown-toggle::after{content:'';display:inline-block;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:4px solid var(--muted);transition:transform .2s;margin-top:1px;}
-.nav-dropdown:hover .nav-dropdown-toggle::after{transform:rotate(180deg);}
-.nav-dropdown-menu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);background:#0d1830;border:1px solid var(--border);border-radius:12px;padding:8px;min-width:180px;opacity:0;visibility:hidden;transition:opacity .2s,transform .2s,visibility .2s;transform:translateX(-50%) translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.5);z-index:100;}
-.nav-dropdown:hover .nav-dropdown-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
-.nav-dropdown-menu a{display:block;padding:8px 14px;font-size:12px;color:var(--muted2);text-decoration:none;border-radius:8px;transition:all .15s;white-space:nowrap;}
-.nav-dropdown-menu a:hover{background:rgba(91,141,238,.08);color:var(--accent);}
-.nav-dropdown-menu .dropdown-divider{height:1px;background:var(--border);margin:6px 0;}
-
-/* SITE WRAPPER CARD */
-.site-wrapper{max-width:1140px;margin:20px auto;border:1px solid rgba(255,255,255,.13);border-radius:20px;overflow:hidden;box-shadow:0 0 0 1px rgba(91,141,238,.07),0 40px 100px rgba(0,0,0,.6);position:relative;z-index:1;}
-body{padding:0 16px;background:var(--bg);}
-@media(max-width:768px){.site-wrapper{margin:10px auto;border-radius:14px;}body{padding:0 8px;}}
 </style>
 </head>
 <body>
 
-<div class="glow-blob" id="glowBlob"></div>
-
-<div class="site-wrapper">
-<nav id="mainNav">
-  <div class="container">
-    <div class="inner">
-      <a href="https://trustogor.github.io/" class="home-btn">Trust Ogor<span>.</span></a>
-      <div class="nav-links">
-        <div class="nav-dropdown">
-          <span class="nav-dropdown-toggle">Work</span>
-          <div class="nav-dropdown-menu">
-            <a href="https://trustogor.github.io/#work">Where I Do My Best Work</a>
-            <a href="https://trustogor.github.io/#philosophy">Philosophy</a>
-            <a href="https://trustogor.github.io/#ai-hiring">AI-Augmented Hiring</a>
-            <div class="dropdown-divider"></div>
-            <a href="https://trustogor.github.io/#experience">Experience</a>
-            <a href="https://trustogor.github.io/#projects">Projects</a>
-            <a href="https://trustogor.github.io/#stack">Stack</a>
-            <a href="https://trustogor.github.io/#education">Education</a>
-          </div>
-        </div>
-        <a href="#" class="active nav-ventures-badge">Ventures</a>
-      </div>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Trust Ogor</a>
+    <div class="nav-links">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="ventures.html" class="nav-active">Ventures</a>
     </div>
+    <a href="mailto:trustogor@gmail.com" class="nav-cta">Let&#x2019;s Talk</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="ventures-hero">
-  <div class="container">
-    <div class="ventures-hero-label">Beyond the hire</div>
-    <h1 class="ventures-hero-heading">Building things<br>from <span>scratch</span>.</h1>
-    <p class="ventures-hero-sub">Alongside my work in talent, I build. This page documents my entrepreneurial projects — the problems I've chosen to solve, the systems I've designed, and the companies I'm bringing to life.</p>
-    <div class="founder-badge">
-      <div class="founder-badge-dot"></div>
-      <span class="founder-badge-text">Currently building — uSwitch</span>
+<div class="ventures-hero">
+  <div class="vh-left">
+    <div class="vh-eyebrow">Ventures</div>
+    <h1 class="vh-h1">Building Things<br>From <em>Scratch.</em></h1>
+    <p class="vh-sub">Alongside my work in talent, I build. This page documents the problems I&#x2019;ve chosen to solve, the systems I&#x2019;ve designed, and the companies I&#x2019;m bringing to life.</p>
+    <div class="vh-badge">
+      <span class="vh-badge-dot"></span>
+      <span class="vh-badge-text">Currently Building &mdash; uSwitch</span>
     </div>
   </div>
-</section>
+  <div class="vh-right">
+    <div class="vh-stat-grid">
+      <div class="vh-stat"><div class="vh-stat-val">1</div><div class="vh-stat-label">Active Venture</div></div>
+      <div class="vh-stat"><div class="vh-stat-val">MVP</div><div class="vh-stat-label">Current Stage</div></div>
+      <div class="vh-stat"><div class="vh-stat-val">&#x20A6;</div><div class="vh-stat-label">Nigerian Market</div></div>
+      <div class="vh-stat"><div class="vh-stat-val">0&#x2192;1</div><div class="vh-stat-label">Technical Build</div></div>
+    </div>
+    <div class="vh-mission">
+      <div class="vh-mission-label">The Thesis</div>
+      <p class="vh-mission-text">&#x201C;The best businesses solve problems that are obvious once you see them, ignored by everyone who hasn&#x2019;t lived them.&#x201D;</p>
+    </div>
+  </div>
+</div>
 
-<div class="divider"></div>
-
-<!-- USWITCH -->
-<section id="ventures" style="padding:28px 0 80px;">
+<section class="section">
   <div class="container">
-    <div class="section-label reveal">Active Venture</div>
-    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:700;letter-spacing:-.6px;margin-bottom:36px" class="reveal">uSwitch</h2>
-
-    <div class="venture-card reveal d1">
-
-      <!-- Header -->
-      <div class="venture-card-header">
-        <div class="venture-logo-area">
-          <div class="venture-logo">uS</div>
+    <div class="venture-card">
+      <div class="vc-header">
+        <div>
+          <div class="vc-logo-row">
+            <div class="vc-logo">uS</div>
+            <div>
+              <div class="vc-name">uSwitch</div>
+              <div class="vc-tagline">Electricity access, reimagined for Nigeria</div>
+            </div>
+          </div>
+          <a href="https://uswitch.ng/" target="_blank" class="vc-url">uswitch.ng &#8599;</a>
+        </div>
+        <div class="vc-status-col">
+          <div class="vc-status"><span class="vc-status-dot"></span>Building &mdash; MVP Stage</div>
+          <div class="vc-role">Co-Founder &amp; CTO</div>
+        </div>
+      </div>
+      <div class="vc-body">
+        <div class="vc-two-col">
           <div>
-            <div class="venture-name">uSwitch</div>
-            <div class="venture-tagline">Electricity access, reimagined for Nigeria</div>
-            <a href="https://uswitch.ng/" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--orange);text-decoration:none;margin-top:6px;opacity:0.85;transition:opacity .2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              uswitch.ng
-            </a>
+            <div class="vc-block-label">The Problem</div>
+            <div class="vc-block-text">Millions of Nigerians with prepaid electricity meters go dark when they run out of credit &#8212; due to irregular income, salary delays, or emergencies. No immediate cash means no power, and expensive alternatives like generators fill the gap. It&#x2019;s a timing problem disguised as an energy problem.</div>
+          </div>
+          <div>
+            <div class="vc-block-label">The Solution</div>
+            <div class="vc-block-text">uSwitch is a fintech platform that modernises how Nigerians access prepaid electricity &#8212; combining instant token purchase, a Buy Now Pay Later credit facility, and automated recurring top-ups so users never go dark again. The electricity is there. The infrastructure is there. The gap is purely financial and structural.</div>
           </div>
         </div>
-        <div class="venture-status">
-          <div class="status-badge status-building"><div class="status-dot"></div>Building — MVP Stage</div>
-          <div class="venture-role">Co-Founder &amp; CTO</div>
-        </div>
-      </div>
-
-      <!-- Body -->
-      <div class="venture-body">
-
-        <!-- Problem / Solution -->
-        <div class="venture-section-title">The Opportunity</div>
-        <div class="ps-grid">
-          <div class="ps-card problem">
-            <div class="ps-card-label">Problem</div>
-            <div class="ps-card-text">Millions of Nigerians with prepaid electricity meters go dark when they run out of credit — due to irregular income, salary delays, or emergencies. No immediate cash means no power, and expensive alternatives like generators fill the gap.</div>
-          </div>
-          <div class="ps-card solution">
-            <div class="ps-card-label">Solution</div>
-            <div class="ps-card-text">uSwitch is a fintech platform that modernises how Nigerians access prepaid electricity — combining instant token purchase, a Buy Now Pay Later credit facility, and automated recurring top-ups so users never go dark again.</div>
-          </div>
-        </div>
-
-        <!-- 3 Core Features -->
-        <div class="venture-section-title">Core Product</div>
+        <div class="vc-block-label" style="margin-bottom:12px;">Core Product</div>
         <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">⚡</div>
-            <div class="feature-name">Instant Token Purchase</div>
-            <div class="feature-desc">Buy electricity tokens immediately via card, bank transfer, or wallet — any time, any amount.</div>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">💳</div>
-            <div class="feature-name">Buy Now, Pay Later</div>
-            <div class="feature-desc">Access ₦3,000–₦20,000 in electricity credit repayable in 7–14 days at a flat service fee. Mandatory auto-debit ensures repayment and manages default risk.</div>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">🔁</div>
-            <div class="feature-name">Auto Top-Up</div>
-            <div class="feature-desc">Set weekly or monthly auto-purchase schedules. Predictable power with zero manual effort.</div>
-          </div>
+          <div class="feature-card"><div class="feature-icon">&#x26A1;</div><div class="feature-name">Instant Token Purchase</div><div class="feature-desc">Buy electricity tokens immediately via card, bank transfer, or wallet &#8212; any time, any amount.</div></div>
+          <div class="feature-card"><div class="feature-icon">&#x1F4B3;</div><div class="feature-name">Buy Now, Pay Later</div><div class="feature-desc">Access &#x20A6;3,000&#x2013;&#x20A6;20,000 in electricity credit repayable in 7&#x2013;14 days. Auto-debit manages default risk.</div></div>
+          <div class="feature-card"><div class="feature-icon">&#x1F501;</div><div class="feature-name">Auto Top-Up</div><div class="feature-desc">Set weekly or monthly auto-purchase schedules. Predictable power with zero manual effort.</div></div>
         </div>
-
-        <!-- Why Now -->
-        <div class="venture-section-title">Why Now</div>
+        <div class="vc-block-label" style="margin-bottom:12px;">Why Now</div>
         <div class="why-now-grid">
-          <div class="why-now-item">
-            <div class="why-now-icon">📈</div>
-            <div class="why-now-text">Prepaid meter adoption is high and growing across Nigeria — the infrastructure base is already there.</div>
-          </div>
-          <div class="why-now-item">
-            <div class="why-now-icon">🥇</div>
-            <div class="why-now-text">BNPL is proven in retail but untested in utilities — uSwitch has a first-mover advantage in this space.</div>
-          </div>
-          <div class="why-now-item">
-            <div class="why-now-icon">🏗️</div>
-            <div class="why-now-text">Payment gateways, KYC providers, and aggregators now exist to support rapid scaling in Nigeria.</div>
-          </div>
-          <div class="why-now-item">
-            <div class="why-now-icon">🎯</div>
-            <div class="why-now-text">Users are price-aware and actively seeking solutions to power reliability — demand is latent and immediate.</div>
-          </div>
+          <div class="why-item"><div class="why-icon">&#x1F4C8;</div><div class="why-text">Prepaid meter adoption is high and growing &#8212; the infrastructure base is already there.</div></div>
+          <div class="why-item"><div class="why-icon">&#x1F947;</div><div class="why-text">BNPL is proven in retail but untested in utilities &#8212; uSwitch has a first-mover advantage.</div></div>
+          <div class="why-item"><div class="why-icon">&#x1F3D7;</div><div class="why-text">Payment gateways, KYC providers, and aggregators now exist to support rapid scaling in Nigeria.</div></div>
+          <div class="why-item"><div class="why-icon">&#x1F3AF;</div><div class="why-text">Users are price-aware and actively seeking solutions to power reliability &#8212; demand is latent and immediate.</div></div>
         </div>
-
-        <!-- My Role -->
-        <div class="venture-section-title" style="margin-top:28px;">My Role — Co-Founder &amp; CTO</div>
+        <div class="vc-block-label" style="margin-bottom:12px;">My Role &mdash; Co-Founder &amp; CTO</div>
         <div class="role-grid">
-          <div class="role-card">
-            <div class="role-card-title"><span class="role-card-icon">🏗️</span>Technical Architecture</div>
-            <ul class="role-bullets">
-              <li>Defined core stack: Go (Fiber) + PostgreSQL + Redis, React + TypeScript frontend, Kubernetes</li>
-              <li>Architected separation between Java payments/vending layer and Go + React ops layer</li>
-              <li>Integrated licensed aggregators, payment providers, and KYC services</li>
-              <li>Designed compliance, security, and scalability requirements from day one</li>
-            </ul>
-          </div>
-          <div class="role-card">
-            <div class="role-card-title"><span class="role-card-icon">👥</span>Engineering Leadership</div>
-            <ul class="role-bullets">
-              <li>Recruited and managed a senior engineer to lead the MVP build</li>
-              <li>Structured contracts with IP assignment and knowledge transfer requirements</li>
-              <li>Built engineer offboarding and access control systems</li>
-              <li>Planning hire of 2 mid-level engineers post-launch</li>
-            </ul>
-          </div>
-          <div class="role-card">
-            <div class="role-card-title"><span class="role-card-icon">⚖️</span>Product &amp; Risk</div>
-            <ul class="role-bullets">
-              <li>Designed BNPL with KYC verification, meter-level blacklisting, and hard default blocks</li>
-              <li>Created full MVP product specification with clear acceptance criteria</li>
-              <li>Managed compliance and licensing strategy for fintech operations</li>
-              <li>Built financial models for unit economics and break-even targets</li>
-            </ul>
-          </div>
-          <div class="role-card">
-            <div class="role-card-title"><span class="role-card-icon">🚀</span>Go-to-Market</div>
-            <ul class="role-bullets">
-              <li>Designing MVP validation strategy focused on manual acquisition and retention</li>
-              <li>Positioning against BuyPower and iRecharge with BNPL as key differentiator</li>
-              <li>Established NDAs, IP protection, and compliance framework for investor readiness</li>
-              <li>Set clear metrics for moving beyond MVP: retention, repeat usage, activation</li>
-            </ul>
-          </div>
+          <div class="role-card"><div class="role-card-icon">&#x1F3D7;</div><div class="role-card-name">Technical Architecture</div><div class="role-card-desc">Defined core stack: Java/Spring Boot + Go + PostgreSQL + Redis. React + TypeScript frontend, Kubernetes infrastructure. Architected separation between payments and ops layers. Integrated aggregators, payment providers, and KYC services.</div></div>
+          <div class="role-card"><div class="role-card-icon">&#x1F465;</div><div class="role-card-name">Engineering Leadership</div><div class="role-card-desc">Recruited and managed a senior engineer to lead the MVP build. Structured contracts with IP assignment. Built access control systems. Planning 2 mid-level engineer hires post-launch.</div></div>
+          <div class="role-card"><div class="role-card-icon">&#x2696;</div><div class="role-card-name">Product &amp; Risk</div><div class="role-card-desc">Designed BNPL with KYC verification, meter-level blacklisting, and hard default blocks. Created full MVP specification. Managed compliance and licensing strategy. Built financial models for unit economics.</div></div>
+          <div class="role-card"><div class="role-card-icon">&#x1F680;</div><div class="role-card-name">Go-to-Market</div><div class="role-card-desc">Designing MVP validation strategy focused on manual acquisition and retention. Positioning against BuyPower and iRecharge with BNPL as key differentiator. Established NDAs, IP protection, and compliance framework for investor readiness.</div></div>
         </div>
-
-        <!-- Tech Stack -->
-        <div class="venture-section" style="margin-top:28px;">
-          <div class="venture-section-title">Tech Stack</div>
-          <div class="tech-chips">
-            <span class="tech-chip">Java · Spring Boot</span>
-            <span class="tech-chip">Go</span>
-            <span class="tech-chip">Next.js · TypeScript</span>
-            <span class="tech-chip">Tailwind CSS</span>
-            <span class="tech-chip">PostgreSQL</span>
-            <span class="tech-chip">Redis</span>
-            <span class="tech-chip">Kubernetes</span>
-            <span class="tech-chip">Docker</span>
-            <span class="tech-chip">Hetzner</span>
-            <span class="tech-chip">ArgoCD</span>
-            <span class="tech-chip">S3</span>
-          </div>
+        <div class="vc-block-label" style="margin-bottom:12px;">Tech Stack</div>
+        <div class="tech-chips">
+          <span class="tech-chip">Java &middot; Spring Boot</span>
+          <span class="tech-chip">Go</span>
+          <span class="tech-chip">Next.js &middot; TypeScript</span>
+          <span class="tech-chip">Tailwind CSS</span>
+          <span class="tech-chip">PostgreSQL</span>
+          <span class="tech-chip">Redis</span>
+          <span class="tech-chip">Kubernetes</span>
+          <span class="tech-chip">Docker</span>
+          <span class="tech-chip">Hetzner</span>
+          <span class="tech-chip">ArgoCD</span>
+          <span class="tech-chip">S3</span>
         </div>
-
+        <div class="metrics-row">
+          <div class="metric-tile"><div class="metric-val">~3mo</div><div class="metric-label">Concept to staging-ready MVP</div></div>
+          <div class="metric-tile"><div class="metric-val">3</div><div class="metric-label">Core product features built</div></div>
+          <div class="metric-tile"><div class="metric-val">BNPL</div><div class="metric-label">First in Nigerian utilities market</div></div>
+          <div class="metric-tile"><div class="metric-val">0&#x2192;1</div><div class="metric-label">Full technical &amp; legal foundation</div></div>
+        </div>
       </div>
-
-      <!-- Metrics -->
-      <div class="venture-metrics">
-        <div class="v-metric"><span class="v-metric-val">~3mo</span><span class="v-metric-lbl">Concept to staging-ready MVP</span></div>
-        <div class="v-metric"><span class="v-metric-val">3</span><span class="v-metric-lbl">Core product features built</span></div>
-        <div class="v-metric"><span class="v-metric-val">BNPL</span><span class="v-metric-lbl">First in Nigerian utilities market</span></div>
-        <div class="v-metric"><span class="v-metric-val">0→1</span><span class="v-metric-lbl">Full technical &amp; legal foundation</span></div>
-      </div>
-
-    </div><!-- end venture-card -->
     </div>
-
   </div>
 </section>
-
-<div class="divider"></div>
 
 <footer>
-  <div class="container">
-    <div class="footer-inner">
-      <span class="footer-copy">© 2026 Trust Ogor</span>
-      <a href="https://trustogor.github.io/" class="footer-back">← Back to trustogor.github.io</a>
+  <div class="footer-inner">
+    <div class="footer-brand">Trust Ogor</div>
+    <div class="footer-copy">&copy; 2026 Trust Ogor. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="index.html">&#8592; Portfolio</a>
+      <a href="https://linkedin.com/in/togor" target="_blank">LinkedIn</a>
+      <a href="mailto:trustogor@gmail.com">Email</a>
     </div>
   </div>
 </footer>
-</div>
 
-<script>
-const blob = document.getElementById('glowBlob');
-document.addEventListener('mousemove', function(e) {
-  blob.style.transform = 'translate(' + (e.clientX - 300) + 'px, ' + (e.clientY - 300) + 'px)';
-});
-const nav = document.getElementById('mainNav');
-window.addEventListener('scroll', function() {
-  nav.classList.toggle('scrolled', window.scrollY > 30);
-});
-var obs = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) {
-    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
-</script>
 </body>
 </html>
